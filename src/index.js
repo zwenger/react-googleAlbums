@@ -3,9 +3,18 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
-import {Provider} from 'react-redux'
+import {Provider} from 'react-redux';
+import firebase from './initializers/firebase'
+import {setUser, clearUser} from './initializers/actions'; 
 import store from './initializers/store'
+
+firebase.auth().onAuthStateChanged((user)=>{
+    if (user) {
+        store.dispatch(setUser(user));
+    } else {
+        store.dispatch(clearUser());
+    }
+})
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
 
