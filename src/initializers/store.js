@@ -11,6 +11,7 @@ function tokenReducer(state="", action) {
             return state;
     }
 }
+
 function userReducer(state=null, action) {
     switch (action.type) {
         case "LOGGED_IN":
@@ -21,9 +22,22 @@ function userReducer(state=null, action) {
             return state;
     }
 }
+
+function albumsReducer(state=[], action) {
+    switch (action.type) {
+        case "SET_ALBUMS":
+            return action.user;
+        case "CLEAR_ALBUMS":
+            return null;
+        default:
+            return state;
+    }
+}
+
 let rootReducer = combineReducers({
     token: tokenReducer,
-    user: userReducer
+    user: userReducer,
+    albums: albumsReducer
 });
 
 let mainEnhancer = compose(persistState('token'));
