@@ -1,4 +1,5 @@
-import {createStore, combineReducers} from 'redux';
+import {createStore, combineReducers, compose} from 'redux';
+import persistState from 'redux-localstorage'
 
 function tokenReducer(state="", action) {
     switch (action.type) {
@@ -25,6 +26,8 @@ let rootReducer = combineReducers({
     user: userReducer
 });
 
-let store = createStore(rootReducer)
+let mainEnhancer = compose(persistState('token'));
+
+let store = createStore(rootReducer, {}, mainEnhancer)
 
 export default store;
