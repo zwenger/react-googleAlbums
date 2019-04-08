@@ -2,11 +2,19 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {setAlbums, clearAlbums} from '../initializers/actions';
 import axios from 'axios';
+import AlbumsList from '../components/AlbumsList';
 
 class Albums extends Component{
 
     componentDidMount(){
-        this.loadPhotos();
+        //this.loadPhotos();
+        if(process.env.NODE_ENV === 'production'){
+            this.loadPhotos();
+        }else{
+            import('../data/albums').then(module=>{
+                console.log(module.default);
+            })
+        }
     }
 
     loadPhotos(){
@@ -19,7 +27,7 @@ class Albums extends Component{
         })
     }
     render(){
-        return (<div> </div>); 
+        return (<AlbumsList/>); 
     }
     
 }
@@ -35,3 +43,5 @@ const mapDispatchToProps = {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Albums);
+
+    
