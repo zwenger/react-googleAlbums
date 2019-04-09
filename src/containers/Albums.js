@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import {setAlbums, clearAlbums} from '../initializers/actions';
+import {setAlbums, clearAlbums, setAlbum} from '../initializers/actions';
 import axios from 'axios';
 import AlbumsList from '../components/AlbumsList';
 
@@ -12,7 +12,7 @@ class Albums extends Component{
             this.loadPhotos();
         }else{
             import('../data/albums').then(module=>{
-                console.log(module.default);
+                this.props.setAlbums(module.default.albums)
             })
         }
     }
@@ -24,22 +24,27 @@ class Albums extends Component{
             headers: {
                 'Authorization': `Bearer ${this.props.token}`
             }
-        })
+        }).then(r=>{
+            this.props.setAlbums(r.data.albums);
+        }).catch(console.log);
     }
+
     render(){
-        return (<AlbumsList/>); 
+        return ([<AlbumsList setAlbum={this.props.setAlbum} albums={this.props.albums} />]); 
     }
     
 }
 
 const mapStateToProps = (state) => ({
     albums: state.albums,
-    token: state.token
+    token: state.token,
+    mainAlbum: state.mainAlbum
 })
 
 const mapDispatchToProps = {
     setAlbums,
-    clearAlbums
+    clearAlbums,
+    setAlbum
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Albums);

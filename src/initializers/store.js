@@ -26,9 +26,29 @@ function userReducer(state=null, action) {
 function albumsReducer(state=[], action) {
     switch (action.type) {
         case "SET_ALBUMS":
-            return action.user;
+            return action.albums;
         case "CLEAR_ALBUMS":
+            return [];
+        default:
+            return state;
+    }
+}
+function albumReducer(state=null, action) {
+    switch (action.type) {
+        case "SET_ALBUM":
+            return action.album;
+        case "CLEAR_ALBUM":
             return null;
+        default:
+            return state;
+    }
+}
+function photosReducer(state=[], action) {
+    switch (action.type) {
+        case "SET_PHOTOS":
+            return action.photos;
+        case "CLEAR_PHOTOS":
+            return [];
         default:
             return state;
     }
@@ -37,7 +57,9 @@ function albumsReducer(state=[], action) {
 let rootReducer = combineReducers({
     token: tokenReducer,
     user: userReducer,
-    albums: albumsReducer
+    albums: albumsReducer,
+    mainAlbum: albumReducer,
+    photos: photosReducer 
 });
 
 let mainEnhancer = compose(persistState('token'));

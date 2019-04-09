@@ -8,7 +8,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 function AlbumCard(props){
   return(
-    <Card>
+    <Card className={props.classes.item} onClick={()=> props.setAlbum(props.album)}>
       <CardMedia className={props.classes.media} image={props.album.coverPhotoBaseUrl} />
       <CardContent>
         <Typography variant="h5" component="h2" glutterbottom="true">{props.album.title}</Typography>
@@ -20,7 +20,12 @@ function AlbumCard(props){
 
 
 export default withStyles({
-  media:{
-    minHeight: '200px'
+    item:{
+        minWidth: '350px',
+        margin: '1em',
+        boxSizing: 'border-box '
+    },
+    media:{
+        minHeight: '200px'
   }
 })(AlbumCard);
