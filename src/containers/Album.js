@@ -34,14 +34,15 @@ class Album extends Component{
         })
     }
     render(){
-        return(<PhotosList/>);
+        return(<PhotosList album={this.props.mainAlbum} photos={this.props.photos}/>);
     }
 }
 
 const mapStateToProps = (state) => ({
     mainAlbum: state.mainAlbum,
-    token: state.token
-})
+    token: state.token,
+    photos: state.photos
+}); 
 
 const mapDispatchToProps = {
     setPhotos,
