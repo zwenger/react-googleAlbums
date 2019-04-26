@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import {connect} from 'react-redux';
-import {setPhotos, clearPhotos } from '../initializers/actions';
+import {setPhotos, clearPhotos, clearAlbum } from '../initializers/actions';
 import Axios from 'axios';
 import PhotosList from '../components/PhotosList';
 
@@ -35,7 +35,12 @@ class Album extends Component{
         })
     }
     render(){
-        return(<PhotosList album={this.props.mainAlbum} photos={this.props.photos}/>);
+        return(<PhotosList 
+                clearAlbum={this.props.clearAlbum} 
+                clearPhotos={this.props.clearPhotos} 
+                album={this.props.mainAlbum} 
+                photos={this.props.photos}
+               />);
     }
 }
 
@@ -47,7 +52,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
     setPhotos,
-    clearPhotos
+    clearPhotos,
+    clearAlbum
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Album);

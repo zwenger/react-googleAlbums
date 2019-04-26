@@ -30,7 +30,11 @@ class Albums extends Component{
     }
 
     render(){
-        return <AlbumsList setAlbum={this.props.setAlbum} albums={this.props.albums} />; 
+        return (<AlbumsList 
+                    mainAlbum={this.props.mainAlbum} 
+                    setAlbum={this.props.setAlbum}
+                    albums={this.props.albums}
+                 />);
     }
     
 }
@@ -39,7 +43,7 @@ const mapStateToProps = (state) => ({
     albums: state.albums,
     token: state.token,
     mainAlbum: state.mainAlbum
-})
+});
 
 const mapDispatchToProps = {
     setAlbums,

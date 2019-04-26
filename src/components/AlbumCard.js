@@ -24,7 +24,8 @@ export default withStyles({
     item:{
         minWidth: '350px',
         margin: '1em',
-        boxSizing: 'border-box '
+        boxSizing: 'border-box',
+        cursor:'pointer'
     },
     media:{
         minHeight: '200px'
