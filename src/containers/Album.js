@@ -7,6 +7,7 @@ import PhotosList from '../components/PhotosList';
 class Album extends Component{
 
     componentDidUpdate(prevProps){
+       // this.loadPhotos();
         if(this.props.mainAlbum){
             if(process.env.NODE_ENV === 'production'){
                 this.loadPhotos();

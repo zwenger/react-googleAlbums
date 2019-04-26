@@ -6,6 +6,7 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Typography from '@material-ui/core/Typography';
 import { withStyles } from '@material-ui/core/styles';
 
+
 function AlbumCard(props){
   return(
     <Card className={props.classes.item} onClick={()=> props.setAlbum(props.album)}>

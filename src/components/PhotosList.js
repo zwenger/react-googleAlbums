@@ -12,10 +12,9 @@ function PhotosList(props){
         <Button>Regresar atras</Button>,
         <Typography variant='headline' component='h3'>Fotos del album</Typography>,
         <Typography variant='caption' component='p'>{props.photos.length} foto(s) en este album</Typography>,
-        <PhotosCarrousel photos={props.photos} />
-
-        ]
+          ]
         }
+        <PhotosCarrousel photos={props.photos} />
     </div>
     )
 }

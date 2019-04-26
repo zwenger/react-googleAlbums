@@ -7,7 +7,7 @@ import AlbumsList from '../components/AlbumsList';
 class Albums extends Component{
 
     componentDidMount(){
-        //this.loadPhotos();
+        this.loadPhotos();
         if(process.env.NODE_ENV === 'production'){
             this.loadPhotos();
         }else{
@@ -30,7 +30,7 @@ class Albums extends Component{
     }
 
     render(){
-        return ([<AlbumsList setAlbum={this.props.setAlbum} albums={this.props.albums} />]); 
+        return <AlbumsList setAlbum={this.props.setAlbum} albums={this.props.albums} />; 
     }
     
 }
