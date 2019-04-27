@@ -10,7 +10,7 @@ import Box from '../animations/Box';
 
 function PhotosCarrousel(props){
     return(
-    <div className={props.classes.container}>
+    <div className={props.classes.container} >
         <PoseGroup>
             {props.photos.map((photo,index)=>{
                 return(
@@ -38,13 +38,19 @@ export default withStyles ({
         overflowX: 'scroll',
         justifyContent: 'center',
         padding: '1em'
+        //minHeight: '620px',
+        
+        
+
     },
     card:{
         minWidth: '400px',
-        marginRight: '1em'
+        height: '100% !important',
+        marginRight: '1em',
     },
     img:{
         maxWidth: '100%',
-        height:'auto'
+        height:'400px',
+        padding: '2em'
     }
 })(PhotosCarrousel);

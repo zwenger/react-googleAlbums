@@ -8,7 +8,7 @@ class Album extends Component{
 
     componentDidUpdate(prevProps){
        // this.loadPhotos();
-        if(this.props.mainAlbum){
+        if(this.props.mainAlbum && this.props.mainAlbum !== prevProps.mainAlbum){
             if(process.env.NODE_ENV === 'production'){
                 this.loadPhotos();
             }else{

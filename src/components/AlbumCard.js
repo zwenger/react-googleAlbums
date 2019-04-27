@@ -25,9 +25,9 @@ export default withStyles({
         minWidth: '350px',
         margin: '1em',
         boxSizing: 'border-box',
-        cursor:'pointer'
+        cursor:'pointer',
     },
     media:{
-        minHeight: '200px'
+        height: '200px'
   }
 })(AlbumCard);

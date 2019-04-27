@@ -7,7 +7,7 @@ import AlbumsList from '../components/AlbumsList';
 class Albums extends Component{
 
     componentDidMount(){
-        this.loadPhotos();
+        //this.loadPhotos();
         if(process.env.NODE_ENV === 'production'){
             this.loadPhotos();
         }else{
